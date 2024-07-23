@@ -16,30 +16,39 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Get the current route name
+        $role = Auth::user()->role;
+        $roleRoutes = [
+            'admin' => [
+                'admin.dashboard',
+                'admin.users.index',
+                'admin.users.create',
+                'admin.users.store',
+                'admin.users.edit',
+                'admin.users.update',
+                'admin.users.destroy'
+            ],
+            'student' => ['student.dashboard'],
+            'lecturer' => ['lecturer.dashboard'],
+            'parent' => ['parent.dashboard'],
+        ];
+
         $currentRouteName = $request->route()->getName();
 
-        // Get the role of the authenticated user
-        $role = Auth::user()->role;
-
-        // Redirect based on the role if not already on the intended route
-        if ($role === 'student' && $currentRouteName !== 'student.dashboard') {
-            return redirect()->route('student.dashboard');
+        if (isset($roleRoutes[$role]) && in_array($currentRouteName, $roleRoutes[$role])) {
+            return $next($request);
         }
 
-        if ($role === 'lecturer' && $currentRouteName !== 'lecturer.dashboard') {
-            return redirect()->route('lecturer.dashboard');
+        switch ($role) {
+            case 'admin':
+                return redirect()->route('admin.dashboard');
+            case 'student':
+                return redirect()->route('student.dashboard');
+            case 'lecturer':
+                return redirect()->route('lecturer.dashboard');
+            case 'parent':
+                return redirect()->route('parent.dashboard');
+            default:
+                return abort(403, 'Unauthorized action.');
         }
-
-        if ($role === 'parent' && $currentRouteName !== 'parent.dashboard') {
-            return redirect()->route('parent.dashboard');
-        }
-
-        if ($role === 'admin' && $currentRouteName !== 'admin.dashboard') {
-            return redirect()->route('admin.dashboard');
-        }
-
-        // If already on the intended route, proceed with the request
-        return $next($request);
     }
 }
