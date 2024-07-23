@@ -7,7 +7,6 @@
                 <div class="flex shrink-0 items-center">
                     <a href="{{ route('dashboard') }}">
                         <img src="{{ asset('images/logo.jpg') }}" alt="NAHS Learning Logo" class="h-12">
-
                     </a>
                 </div>
 
