@@ -26,7 +26,7 @@
                             <x-nav-link href="#">
                                 {{ __('Meetings') }}
                             </x-nav-link>
-                            <x-nav-link href="#">
+                            <x-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.index')">
                                 {{ __('Students') }}
                             </x-nav-link>
                             <x-nav-link href="#">
@@ -167,7 +167,7 @@
                     <x-responsive-nav-link href="#">
                         {{ __('Meetings') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#">
+                    <x-responsive-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.index')">
                         {{ __('Students') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link href="#">
