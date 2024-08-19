@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Lecturer\DashboardController as LecturerDashboardController;
+use App\Http\Controllers\Lecturer\ScheduleController;
 use App\Http\Controllers\Parent\DashboardController as ParentDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +32,12 @@ Route::middleware(['auth', 'role'])->prefix('admin')->name('admin.')->group(func
     Route::resource('students', StudentController::class);
 });
 
+Route::middleware(['auth', 'role'])->prefix('lecturer')->name('lecturer.')->group(function () {
+    Route::get('/dashboard', [LecturerDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule');
+});
+
 Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard')->middleware(['auth', 'role']);
-Route::get('/lecturer/dashboard', [LecturerDashboardController::class, 'index'])->name('lecturer.dashboard')->middleware(['auth', 'role']);
 Route::get('/parent/dashboard', [ParentDashboardController::class, 'index'])->name('parent.dashboard')->middleware(['auth', 'role']);
 
 require __DIR__.'/auth.php';

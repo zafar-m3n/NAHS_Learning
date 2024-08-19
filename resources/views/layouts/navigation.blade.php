@@ -42,7 +42,7 @@
                             <x-nav-link href="#">
                                 {{ __('Students') }}
                             </x-nav-link>
-                            <x-nav-link href="#">
+                            <x-nav-link :href="route('lecturer.schedule')" :active="request()->routeIs('lecturer.schedule')">
                                 {{ __('Schedule') }}
                             </x-nav-link>
                         @elseif(Auth::user()->role == 'student')
@@ -183,7 +183,7 @@
                     <x-responsive-nav-link href="#">
                         {{ __('Students') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#">
+                    <x-responsive-nav-link :href="route('lecturer.schedule')" :active="request()->routeIs('lecturer.schedule')">
                         {{ __('Schedule') }}
                     </x-responsive-nav-link>
                 @elseif(Auth::user()->role == 'student')

@@ -41,7 +41,7 @@ class RoleMiddleware
                 'admin.students.destroy',
             ],
             'student' => ['student.dashboard'],
-            'lecturer' => ['lecturer.dashboard'],
+            'lecturer' => ['lecturer.dashboard', 'lecturer.schedule'],
             'parent' => ['parent.dashboard'],
         ];
 
