@@ -52,7 +52,7 @@
                             <x-nav-link href="#">
                                 {{ __('My Courses') }}
                             </x-nav-link>
-                            <x-nav-link href="#">
+                            <x-nav-link :href="route('student.timetable')" :active="request()->routeIs('student.timetable')">
                                 {{ __('Timetable') }}
                             </x-nav-link>
                             <x-nav-link href="#">
@@ -193,7 +193,7 @@
                     <x-responsive-nav-link href="#">
                         {{ __('My Courses') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#">
+                    <x-responsive-nav-link :href="route('student.timetable')" :active="request()->routeIs('student.timetable')">
                         {{ __('Timetable') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link href="#">
