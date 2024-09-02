@@ -3,24 +3,22 @@
 namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lecturer;
 use App\Models\ScheduleCourse;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    // ... existing code ...
 
     public function index()
     {
-        $schedules = ScheduleCourse::all();
-        return view('lecturer.schedule.index', compact('schedules'));
+        $schedules = Lecturer::with('schedules')->get();
+        return view('lecturer.schedules.index', compact('schedules'));
     }
-
-    // ... existing code ...
 
     public function create()
     {
-        return view('lecturer.schedule.create');
+        return view('lecturer.schedules.create');
     }
 
     public function store(Request $request)
@@ -36,17 +34,17 @@ class ScheduleController extends Controller
 
         ScheduleCourse::create($validatedData);
 
-        return redirect()->route('schedule.index')->with('success', 'Schedule course created successfully.');
+        return redirect()->route('schedules.index')->with('success', 'Schedule course created successfully.');
     }
 
     public function show(ScheduleCourse $scheduleCourse)
     {
-        return view('lecturer.schedule.show', compact('scheduleCourse'));
+        return view('lecturer.schedules.show', compact('scheduleCourse'));
     }
 
     public function edit(ScheduleCourse $scheduleCourse)
     {
-        return view('lecturer.schedule.edit', compact('scheduleCourse'));
+        return view('lecturer.schedules.edit', compact('scheduleCourse'));
     }
 
     public function update(Request $request, ScheduleCourse $scheduleCourse)
@@ -62,13 +60,13 @@ class ScheduleController extends Controller
 
         $scheduleCourse->update($validatedData);
 
-        return redirect()->route('schedule.index')->with('success', 'Schedule course updated successfully.');
+        return redirect()->route('schedules.index')->with('success', 'Schedule course updated successfully.');
     }
 
     public function destroy(ScheduleCourse $scheduleCourse)
     {
         $scheduleCourse->delete();
 
-        return redirect()->route('schedule.index')->with('success', 'Schedule course deleted successfully.');
+        return redirect()->route('schedules.index')->with('success', 'Schedule course deleted successfully.');
     }
 }

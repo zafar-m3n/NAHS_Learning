@@ -22,4 +22,9 @@ class Lecturer extends Model
     {
         return $this->hasMany(Meeting::class, 'lecturer_id');
     }
+
+    public function schedules()
+    {
+        return $this->hasMany(ScheduleCourse::class);
+    }
 }

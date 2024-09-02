@@ -43,8 +43,8 @@ Route::middleware(['auth', 'role'])->prefix('admin')->name('admin.')->group(func
 
 Route::middleware(['auth', 'role'])->prefix('lecturer')->name('lecturer.')->group(function () {
     Route::get('/dashboard', [LecturerDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule');
     Route::get('/course', [LecCoursesController::class, 'index'])->name('course');
+    Route::resource('schedules', ScheduleController::class);
 });
 
 Route::middleware(['auth', 'role'])->prefix('student')->name('student.')->group(function () {
