@@ -36,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            @foreach ($schedules as $schedule)
+                            @foreach ($courses as $course)
                                 <tr class="{{ $loop->odd ? 'bg-gray-50' : '' }}">
                                     <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
                                         {{ $schedule['course'] }}</td>
