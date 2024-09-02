@@ -45,6 +45,7 @@ class RoleMiddleware
             ],
             'student' => ['student.dashboard', 'student.timetable'],
             'lecturer' => ['lecturer.dashboard', 
+            'lecturer.course',
             'lecturer.schedules.index',
             'lecturer.schedules.create',
             'lecturer.schedules.store',

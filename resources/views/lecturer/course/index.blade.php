@@ -39,15 +39,15 @@
                             @foreach ($courses as $course)
                                 <tr class="{{ $loop->odd ? 'bg-gray-50' : '' }}">
                                     <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                                        {{ $schedule['course'] }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ $schedule['day'] }}
+                                        {{ $course['course_code'] }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ $course['course_name'] }}
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                        {{ $schedule['time'] }}</td>
+                                        {{ $course['description'] }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                        {{ $schedule['location'] }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                        {{ $schedule['location'] }}</td>
+                                        {{ $course['stream'] }}</td>
+                                        <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                            {{ $course->lecturer->user->name}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
