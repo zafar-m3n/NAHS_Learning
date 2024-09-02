@@ -44,6 +44,7 @@ Route::middleware(['auth', 'role'])->prefix('admin')->name('admin.')->group(func
 Route::middleware(['auth', 'role'])->prefix('lecturer')->name('lecturer.')->group(function () {
     Route::get('/dashboard', [LecturerDashboardController::class, 'index'])->name('dashboard');
     Route::get('/courses', [LecCoursesController::class, 'index'])->name('course');
+    Route::get('/mystudents', [StudentController::class, 'index'])->name('mystudents');
     Route::resource('schedules', ScheduleController::class);
 });
 

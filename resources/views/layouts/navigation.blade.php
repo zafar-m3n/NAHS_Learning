@@ -180,7 +180,7 @@
                     <x-responsive-nav-link :href="route('lecturer.course')" :active="request()->routeIs('lecturer.course')">
                         {{ __('Courses') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#">
+                    <x-responsive-nav-link :href="route('lecturer.mystudents')" :active="request()->routeIs('lecturer.mystudents')">
                         {{ __('Students') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('lecturer.schedules.index')" :active="request()->routeIs('lecturer.schedules.index')">
