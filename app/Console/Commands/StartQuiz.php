@@ -31,7 +31,9 @@ class StartQuiz extends Command
 
         try {
             
-            $process = new Process(['php', 'artisan', 'serve', '--host=127.0.0.1', '--port=8080']);
+            $process = new Process(['cd', $filePath]);
+            $process->run();
+            $process = new Process(['php', 'artisan', 'serve', '--port=8080']);
             $process->run();
 
             echo "Quiz application started successfully.\n";
