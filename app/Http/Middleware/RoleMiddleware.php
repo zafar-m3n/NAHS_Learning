@@ -43,19 +43,25 @@ class RoleMiddleware
                 'admin.meetings.approve',
                 'admin.meetings.reject',
             ],
-            'student' => ['student.dashboard', 'student.timetable'],
-            'lecturer' => ['lecturer.dashboard', 
-            'lecturer.course',
-            'lecturer.schedules.index',
-            'lecturer.schedules.create',
-            'lecturer.schedules.store',
-            'lecturer.schedules.show',
-            'lecturer.schedules.edit',
-            'lecturer.schedules.update',
-            'lecturer.mystudents',
-            'lecturer.start-quiz'
-        ],
-            'parent' => ['parent.dashboard',
+            'student' => [
+                'student.dashboard',
+                'student.timetable',
+                'student.join-quiz'
+            ],
+            'lecturer' => [
+                'lecturer.dashboard',
+                'lecturer.course',
+                'lecturer.schedules.index',
+                'lecturer.schedules.create',
+                'lecturer.schedules.store',
+                'lecturer.schedules.show',
+                'lecturer.schedules.edit',
+                'lecturer.schedules.update',
+                'lecturer.mystudents',
+                'lecturer.start-quiz'
+            ],
+            'parent' => [
+                'parent.dashboard',
                 'parent.meetings.indexParent',
                 'parent.meetings.create',
                 'parent.meetings.store',

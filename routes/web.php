@@ -52,6 +52,7 @@ Route::middleware(['auth', 'role'])->prefix('lecturer')->name('lecturer.')->grou
 Route::middleware(['auth', 'role'])->prefix('student')->name('student.')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
     Route::get('/timetable', [TImetableController::class, 'index'])->name('timetable');
+    Route::get('/join-quiz', [StudentDashboardController::class, 'joinQuiz'])->name('join-quiz');
 });
 
 Route::middleware(['auth', 'role'])->prefix('parent')->name('parent.')->group(function () {
