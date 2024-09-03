@@ -26,43 +26,32 @@ class StartQuiz extends Command
      */
     public function handle()
     {
+        $currentPath = getcwd();
         $filePath = 'E:\APIIT\others\CC2_assignment_1\NAHS_Learning\Quiz\online-quiz-system-php-laravel';
-    
+
         try {
-            // Check current working directory
-            $currentDir = getcwd();
-            \Log::info("Current working directory: {$currentDir}");
-    
-            // Change directory
-            $oldDir = getcwd();
+            \Log::info('Changing directory...');
             chdir($filePath);
-            $newDir = getcwd();
-    
-            \Log::info("Old directory: {$oldDir}");
-            \Log::info("New directory: {$newDir}");
-    
-            $process = new Process(['cd', $filePath]);
-            $process->run();
-    
+            \Log::info('Directory Changed...');
             $process = new Process(['php', 'artisan', 'serve', '--port=8080']);
-    
+
             // Set a longer timeout
-            $process->setTimeout(300); // 5 minutes
-    
+            // $process->setTimeout(300); 
+
             // Log the start of the process
             \Log::info('Starting quiz application...');
-    
+
             $process->start();
-    
+
             // Wait for the process to finish
             $process->wait();
-    
+
             if ($process->isSuccessful()) {
                 \Log::info('Quiz application started successfully.');
             } else {
                 \Log::error('Error starting quiz application: ' . $process->getExitCode());
             }
-    
+
         } catch (\Exception $e) {
             \Log::error("Error starting quiz application: " . $e->getMessage());
         }

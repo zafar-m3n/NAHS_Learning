@@ -53,6 +53,7 @@ class RoleMiddleware
             'lecturer.schedules.edit',
             'lecturer.schedules.update',
             'lecturer.mystudents',
+            'lecturer.start-quiz'
         ],
             'parent' => ['parent.dashboard',
                 'parent.meetings.indexParent',

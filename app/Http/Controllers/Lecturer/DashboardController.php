@@ -15,9 +15,7 @@ class DashboardController extends Controller
     }
 
     public function startQuiz(Request $request)
-{
-    Artisan::call('app:start-quiz');
-    
-    return redirect()->back()->with('success', 'Quiz application started successfully!');
-}
+    {
+        return redirect()->to('http://localhost:8080')->with('success', 'Quiz application started successfully!');
+    }
 }
