@@ -29,9 +29,6 @@
                             <x-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.index')">
                                 {{ __('Students') }}
                             </x-nav-link>
-                            <x-nav-link href="#">
-                                {{ __('Settings') }}
-                            </x-nav-link>
                         @elseif(Auth::user()->role == 'lecturer')
                             <x-nav-link :href="route('lecturer.dashboard')" :active="request()->routeIs('lecturer.dashboard')">
                                 {{ __('Dashboard') }}
@@ -169,9 +166,6 @@
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.index')">
                         {{ __('Students') }}
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#">
-                        {{ __('Settings') }}
                     </x-responsive-nav-link>
                 @elseif(Auth::user()->role == 'lecturer')
                     <x-responsive-nav-link :href="route('lecturer.dashboard')" :active="request()->routeIs('lecturer.dashboard')">

@@ -15,6 +15,9 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <div class="text-gray-600 ml-3">
+                        <span class="block">{{ session('alert') }}</span>
+                    </div>
                     {{ __("You're logged in!") }}
                 </div>
             </div>

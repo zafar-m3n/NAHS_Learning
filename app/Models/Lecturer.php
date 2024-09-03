@@ -15,7 +15,7 @@ class Lecturer extends Model
 
     public function course()
     {
-        return $this->hasOne(Course::class);
+        return $this->hasMany(Course::class);
     }
 
     public function meetings()
