@@ -57,7 +57,7 @@ class RoleMiddleware
                 'lecturer.schedules.show',
                 'lecturer.schedules.edit',
                 'lecturer.schedules.update',
-                'lecturer.mystudents',
+                'lecturer.students',
                 'lecturer.start-quiz'
             ],
             'parent' => [
