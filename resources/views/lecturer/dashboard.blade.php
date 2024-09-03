@@ -18,7 +18,7 @@
                     <div class="text-gray-600 ml-3">
                         <span class="block">{{ session('alert') }}</span>
                     </div>
-                    {{ __("You're logged in!") }}
+                    <x-weather_component />
                 </div>
             </div>
         </div>
