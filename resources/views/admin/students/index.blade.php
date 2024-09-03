@@ -43,6 +43,10 @@
                                 </th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                                    Course
+                                </th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                                     Actions
                                 </th>
                             </tr>
@@ -53,6 +57,7 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $student->user->name }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $student->user->email }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $student->status }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $student->course->course_name }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <a href="{{ route('admin.students.show', $student) }}"
                                             class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-indigo-700">
