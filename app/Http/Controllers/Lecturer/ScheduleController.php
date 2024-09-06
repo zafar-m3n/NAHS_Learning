@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Lecturer;
 use App\Models\ScheduleCourse;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class ScheduleController extends Controller
 
     public function index()
     {
-        $schedules = Lecturer::with('schedules')->get();
+        $lecturer = auth()->user();
+        $schedules = Course::where('lecturer_id', $lecturer->id)->get();
         return view('lecturer.schedules.index', compact('schedules'));
     }
 

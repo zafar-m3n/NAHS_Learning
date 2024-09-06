@@ -56,7 +56,7 @@
                             @foreach ($schedules as $schedule)
                                 <tr class="{{ $loop->odd ? 'bg-gray-50' : '' }}">
                                     <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                                        {{ $schedule->course->course_name }}</td>
+                                        {{ $schedule->id }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{{ $schedule['day'] }}
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">

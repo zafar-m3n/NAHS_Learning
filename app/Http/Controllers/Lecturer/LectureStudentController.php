@@ -12,18 +12,11 @@ class LectureStudentController extends Controller
 {
     public function index()
     {
-        $lecturer = auth()->user();
-        
-        $course = Course::where('lecturer_id', $lecturer->id)->first();
+        $course = Course::where('lecturer_id', auth()->user()->lecturer->id)
+            ->first();
 
-        if (!$course) {
-            return redirect()->route('lecturer.dashboard');
-        }
-
-        $students = Student::whereHas('course', function ($query) use ($course) {
-            $query->where('course_id', $course->id);
-        })->get();
-
+        $students = Student::where('course_id', $course->id)
+            ->get();
         return view('lecturer.students.index', compact('students'));
     }
 }

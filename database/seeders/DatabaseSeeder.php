@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
             'user_id' => $lecturerUser->id,
         ]);
 
+        
+
         $parentUser = User::factory()->create([
             'name' => 'Parent User',
             'email' => 'parent@gmail.com',
@@ -83,7 +85,9 @@ class DatabaseSeeder extends Seeder
         Student::create([
             'user_id' => $studentUser->id,
             'course_id' => 1,
+            'lecturer_id' => 1,
             'status' => 'active',
         ]);
+        
     }
 }
