@@ -14,6 +14,7 @@ use App\Http\Controllers\Lecturer\LecCoursesController;
 use App\Http\Controllers\Lecturer\LectureStudentController; 
 use App\Http\Controllers\Parent\DashboardController as ParentDashboardController;
 use App\Http\Controllers\MeetingController; 
+use App\Http\Controllers\Student\StudentResourseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -53,6 +54,7 @@ Route::middleware(['auth', 'role'])->prefix('lecturer')->name('lecturer.')->grou
 Route::middleware(['auth', 'role'])->prefix('student')->name('student.')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
     Route::get('/timetable', [TImetableController::class, 'index'])->name('timetable');
+    Route::get('/resources', [StudentResourseController::class, 'index'])->name('resources');
     Route::get('/join-quiz', [StudentDashboardController::class, 'joinQuiz'])->name('join-quiz');
 });
 

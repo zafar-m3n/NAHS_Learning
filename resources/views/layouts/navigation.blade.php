@@ -55,6 +55,9 @@
                             <x-nav-link href="#">
                                 {{ __('Attendance') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">
+                                {{ __('Resources') }}
+                            </x-nav-link>
                         @elseif(Auth::user()->role == 'parent')
                             <x-nav-link :href="route('parent.dashboard')" :active="request()->routeIs('parent.dashboard')">
                                 {{ __('Dashboard') }}
@@ -189,6 +192,9 @@
                     </x-responsive-nav-link>
                     <x-responsive-nav-link href="#">
                         {{ __('Attendance') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link  :href="route('student.resources')" :active="request()->routeIs('student.resources')">
+                        {{ __('Resources') }}
                     </x-responsive-nav-link>
                 @elseif(Auth::user()->role == 'parent')
                     <x-responsive-nav-link :href="route('parent.dashboard')" :active="request()->routeIs('parent.dashboard')">
