@@ -12,6 +12,7 @@ use App\Http\Controllers\Lecturer\DashboardController as LecturerDashboardContro
 use App\Http\Controllers\Lecturer\ScheduleController;
 use App\Http\Controllers\Lecturer\LecCoursesController;
 use App\Http\Controllers\Lecturer\LectureStudentController;
+use App\Http\Controllers\Lecturer\AttendanceController;
 use App\Http\Controllers\Lecturer\ResourceController;
 use App\Http\Controllers\Parent\DashboardController as ParentDashboardController;
 use App\Http\Controllers\MeetingController;
@@ -50,6 +51,9 @@ Route::middleware(['auth', 'role'])->prefix('lecturer')->name('lecturer.')->grou
     Route::get('/students', [LectureStudentController::class, 'index'])->name('students');
     Route::resource('/resources', ResourceController::class);
     Route::resource('schedules', ScheduleController::class);
+    Route::resource('attendance', AttendanceController::class)->only(['index', 'show']);
+    Route::get('attendance/{course}/mark', [AttendanceController::class, 'mark'])->name('attendance.mark');
+    Route::post('attendance/{course}/mark', [AttendanceController::class, 'store'])->name('attendance.store');
     Route::get('/start-quiz', [LecturerDashboardController::class, 'startQuiz'])->name('start-quiz');
 });
 

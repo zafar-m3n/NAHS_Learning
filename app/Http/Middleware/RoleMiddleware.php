@@ -66,6 +66,10 @@ class RoleMiddleware
                 'lecturer.resources.edit',
                 'lecturer.resources.update',
                 'lecturer.resources.destroy',
+                'lecturer.attendance.index',
+                'lecturer.attendance.show',
+                'lecturer.attendance.mark',
+                'lecturer.attendance.store',
             ],
             'parent' => [
                 'parent.dashboard',
