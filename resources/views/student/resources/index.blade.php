@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Resources') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                {{ __('Download Your Lecture Resources') }}
+            </h2>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -14,51 +16,42 @@
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Resource
+                                    Title
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Type
+                                    Course
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                                    Download
+                                    File
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
-                            <tr class="bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                                    Test 1 PDF
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                    PDF
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                    <a href="{{ asset('storage/test1.pdf') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-red-700 hover:text-red-300 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-100 transition duration-150 ease-in-out">
-                                        Download
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-                                    Test 2 PDF
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                    PDF
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                                    <a href="{{ asset('storage/test2.pdf') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-red-700 hover:text-red-300 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-100 transition duration-150 ease-in-out">
-                                        Download
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($resources as $resource)
+                                <tr class="{{ $loop->odd ? 'bg-gray-50' : '' }}">
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                                        {{ $resource->title }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                        {{ $resource->course->course_name }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                                        <a href="{{ asset('storage/' . $resource->file) }}" target="_blank"
+                                            class="text-blue-500 hover:underline">
+                                            View PDF
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
-                    <p class="mt-4 text-sm text-gray-500">
-                        Note: Resources are subject to change based on requests.
-                    </p>
+                    @if ($resources->isEmpty())
+                        <p class="mt-4 text-sm text-gray-500">No resources uploaded yet.</p>
+                    @endif
+
                 </div>
             </div>
         </div>
