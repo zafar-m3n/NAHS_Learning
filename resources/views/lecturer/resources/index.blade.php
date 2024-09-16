@@ -51,25 +51,7 @@
                                             View PDF
                                         </a>
                                     </td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm">
-                                        <a href="{{ route('lecturer.resources.edit', $resource) }}"
-                                            class="text-indigo-600 hover:text-indigo-900">
-                                            Edit
-                                        </a>
-                                        <form action="{{ route('lecturer.resources.destroy', $resource) }}"
-                                            method="POST" class="inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="ml-2 text-red-600 hover:text-red-900">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
                                     <td class="whitespace-nowrap px-6 py-4">
-                                        <a href="{{ route('lecturer.resources.edit', $resource) }}"
-                                            class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-indigo-700">
-                                            {{ __('Edit') }}
-                                        </a>
                                         <form action="{{ route('lecturer.resources.destroy', $resource) }}"
                                             method="POST" class="inline-block">
                                             @csrf
