@@ -58,7 +58,7 @@
                             <x-nav-link :href="route('student.timetable')" :active="request()->routeIs('student.timetable')">
                                 {{ __('Timetable') }}
                             </x-nav-link>
-                            <x-nav-link href="#">
+                            <x-nav-link :href="route('student.attendance.index')" :active="request()->routeIs('student.attendance.index')">
                                 {{ __('Attendance') }}
                             </x-nav-link>
                             <x-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">
@@ -202,7 +202,7 @@
                     <x-responsive-nav-link :href="route('student.timetable')" :active="request()->routeIs('student.timetable')">
                         {{ __('Timetable') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="#">
+                    <x-responsive-nav-link :href="route('student.attendance.index')" :active="request()->routeIs('student.attendance.index')">
                         {{ __('Attendance') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">

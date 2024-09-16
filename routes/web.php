@@ -62,6 +62,7 @@ Route::middleware(['auth', 'role'])->prefix('student')->name('student.')->group(
     Route::get('/timetable', [TImetableController::class, 'index'])->name('timetable');
     Route::get('/resources', [StudentResourseController::class, 'index'])->name('resources');
     Route::get('/join-quiz', [StudentDashboardController::class, 'joinQuiz'])->name('join-quiz');
+    Route::get('/attendance', [App\Http\Controllers\Student\AttendanceController::class, 'index'])->name('attendance.index');
 });
 
 Route::middleware(['auth', 'role'])->prefix('parent')->name('parent.')->group(function () {

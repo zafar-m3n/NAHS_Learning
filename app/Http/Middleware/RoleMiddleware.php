@@ -47,7 +47,8 @@ class RoleMiddleware
                 'student.dashboard',
                 'student.timetable',
                 'student.join-quiz',
-                'student.resources'
+                'student.resources',
+                'student.attendance.index',
             ],
             'lecturer' => [
                 'lecturer.dashboard',
