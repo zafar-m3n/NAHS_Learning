@@ -59,7 +59,13 @@ class RoleMiddleware
                 'lecturer.schedules.edit',
                 'lecturer.schedules.update',
                 'lecturer.students',
-                'lecturer.start-quiz'
+                'lecturer.start-quiz',
+                'lecturer.resources.index',
+                'lecturer.resources.create',
+                'lecturer.resources.store',
+                'lecturer.resources.edit',
+                'lecturer.resources.update',
+                'lecturer.resources.destroy',
             ],
             'parent' => [
                 'parent.dashboard',

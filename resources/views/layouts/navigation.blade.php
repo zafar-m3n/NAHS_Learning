@@ -42,6 +42,9 @@
                             <x-nav-link :href="route('lecturer.schedules.index')" :active="request()->routeIs('lecturer.schedules.index')">
                                 {{ __('Schedule') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('lecturer.resources.index')" :active="request()->routeIs('lecturer.resources.index')">
+                                {{ __('Resources') }}
+                            </x-nav-link>
                         @elseif(Auth::user()->role == 'student')
                             <x-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">
                                 {{ __('Dashboard') }}
@@ -180,6 +183,9 @@
                     <x-responsive-nav-link :href="route('lecturer.schedules.index')" :active="request()->routeIs('lecturer.schedules.index')">
                         {{ __('Schedule') }}
                     </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('lecturer.resources.index')" :active="request()->routeIs('lecturer.resources.index')">
+                        {{ __('Resources') }}
+                    </x-responsive-nav-link>
                 @elseif(Auth::user()->role == 'student')
                     <x-responsive-nav-link :href="route('student.dashboard')" :active="request()->routeIs('student.dashboard')">
                         {{ __('Dashboard') }}
@@ -193,7 +199,7 @@
                     <x-responsive-nav-link href="#">
                         {{ __('Attendance') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link  :href="route('student.resources')" :active="request()->routeIs('student.resources')">
+                    <x-responsive-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">
                         {{ __('Resources') }}
                     </x-responsive-nav-link>
                 @elseif(Auth::user()->role == 'parent')

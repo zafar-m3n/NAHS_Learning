@@ -29,4 +29,9 @@ class Course extends Model
     {
         return $this->hasMany(Student::class);
     }
+
+    public function resources()
+    {
+        return $this->hasMany(Resource::class);
+    }
 }
