@@ -30,11 +30,10 @@ class ResourceController extends Controller
             'course_id' => 'required|exists:courses,id',
         ]);
 
-        $originalFilename = pathinfo($request->file('file')->getClientOriginalName(), PATHINFO_FILENAME);
         $course = Course::find($request->course_id);
         $courseName = str_replace(' ', '_', $course->course_name);
         $currentDateTime = now()->format('Y-m-d_H-i-s');
-        $newFileName = $originalFilename . '-' . $courseName . '-' . $currentDateTime . '.pdf';
+        $newFileName = $request->title . '-' . $courseName . '-' . $currentDateTime . '.pdf';
         $filePath = $request->file('file')->storeAs('resources', $newFileName, 'public');
         Resource::create([
             'title' => $request->title,
@@ -60,11 +59,10 @@ class ResourceController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            $originalFilename = pathinfo($request->file('file')->getClientOriginalName(), PATHINFO_FILENAME);
             $course = Course::find($request->course_id);
             $courseName = str_replace(' ', '_', $course->course_name);
             $currentDateTime = now()->format('Y-m-d_H-i-s');
-            $newFileName = $originalFilename . '-' . $courseName . '-' . $currentDateTime . '.pdf';
+            $newFileName = $request->title . '-' . $courseName . '-' . $currentDateTime . '.pdf';
             $filePath = $request->file('file')->storeAs('resources', $newFileName, 'public');
             $resource->update(['file' => $filePath]);
         }
