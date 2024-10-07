@@ -29,6 +29,7 @@ class StudentController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+            'status' => 'required|in:active,inactive,terminated', // Validate status
         ]);
 
         // Fetch the course to get the lecturer_id
@@ -43,16 +44,41 @@ class StudentController extends Controller
             'role' => 'student',
         ]);
 
-        // Create the student and include lecturer_id
+        // Create the student and include lecturer_id and status
         Student::create([
             'user_id' => $user->id,
             'course_id' => $request->course_id,
-            'lecturer_id' => $lecturer_id, // Include lecturer_id here
-            'status' => 'active',
+            'lecturer_id' => $lecturer_id,
+            'status' => $request->status, // Store the status
         ]);
 
         return redirect()->route('admin.students.index')->with('success', 'Student created successfully.');
     }
+
+    public function update(Request $request, Student $student)
+    {
+        $request->validate([
+            'course_id' => 'required|exists:courses,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $student->user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+            'status' => 'required|in:active,inactive,terminated',
+        ]);
+
+        $student->user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password ? bcrypt($request->password) : null,
+        ]);
+
+        $student->update([
+            'course_id' => $request->course_id,
+            'status' => $request->status, // Update the status
+        ]);
+
+        return redirect()->route('admin.students.index')->with('success', 'Student updated successfully.');
+    }
+
 
 
     public function show(Student $student)
@@ -64,24 +90,6 @@ class StudentController extends Controller
     {
         $courses = Course::all();
         return view('admin.students.edit', compact('student', 'courses'));
-    }
-
-    public function update(Request $request, Student $student)
-    {
-        $request->validate([
-            'course_id' => 'required|exists:courses,id',
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $student->user->id,
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
-
-        $student->user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password ? bcrypt($request->password) : null,
-        ]);
-
-        return redirect()->route('admin.students.index')->with('success', 'Student updated successfully.');
     }
 
     public function destroy(Student $student)
