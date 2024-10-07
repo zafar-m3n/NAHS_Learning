@@ -49,6 +49,9 @@ class RoleMiddleware
                 'student.join-quiz',
                 'student.resources',
                 'student.attendance.index',
+                'student.payments.index',
+                'student.payments.create',
+                'student.payments.store',
             ],
             'lecturer' => [
                 'lecturer.dashboard',

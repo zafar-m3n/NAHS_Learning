@@ -61,6 +61,9 @@
                             <x-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">
                                 {{ __('Learning Materials') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('student.payments.index')" :active="request()->routeIs('student.payments.index')">
+                                {{ __('Payments') }}
+                            </x-nav-link>
                         @elseif(Auth::user()->role == 'parent')
                             <x-nav-link :href="route('parent.dashboard')" :active="request()->routeIs('parent.dashboard')">
                                 {{ __('Dashboard') }}
