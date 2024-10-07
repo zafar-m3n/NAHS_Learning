@@ -31,6 +31,11 @@ class StudentController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
+        // Fetch the course to get the lecturer_id
+        $course = Course::findOrFail($request->course_id);
+        $lecturer_id = $course->lecturer_id;
+
+        // Create the user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -38,14 +43,17 @@ class StudentController extends Controller
             'role' => 'student',
         ]);
 
+        // Create the student and include lecturer_id
         Student::create([
             'user_id' => $user->id,
             'course_id' => $request->course_id,
+            'lecturer_id' => $lecturer_id, // Include lecturer_id here
             'status' => 'active',
         ]);
 
         return redirect()->route('admin.students.index')->with('success', 'Student created successfully.');
     }
+
 
     public function show(Student $student)
     {
