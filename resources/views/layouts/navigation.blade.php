@@ -43,7 +43,7 @@
                                 {{ __('Schedule') }}
                             </x-nav-link>
                             <x-nav-link :href="route('lecturer.resources.index')" :active="request()->routeIs('lecturer.resources.index')">
-                                {{ __('Resources') }}
+                                {{ __('Learning Materials') }}
                             </x-nav-link>
                             <x-nav-link :href="route('lecturer.attendance.index')" :active="request()->routeIs('lecturer.attendance.index')">
                                 {{ __('Attendance') }}
@@ -59,7 +59,7 @@
                                 {{ __('Attendance') }}
                             </x-nav-link>
                             <x-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">
-                                {{ __('Resources') }}
+                                {{ __('Learning Materials') }}
                             </x-nav-link>
                         @elseif(Auth::user()->role == 'parent')
                             <x-nav-link :href="route('parent.dashboard')" :active="request()->routeIs('parent.dashboard')">
@@ -184,7 +184,7 @@
                         {{ __('Schedule') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('lecturer.resources.index')" :active="request()->routeIs('lecturer.resources.index')">
-                        {{ __('Resources') }}
+                        {{ __('Learning Materials') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('lecturer.attendance.index')" :active="request()->routeIs('lecturer.attendance.index')">
                         {{ __('Attendance') }}
@@ -200,7 +200,7 @@
                         {{ __('Attendance') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('student.resources')" :active="request()->routeIs('student.resources')">
-                        {{ __('Resources') }}
+                        {{ __('Learning Materials') }}
                     </x-responsive-nav-link>
                 @elseif(Auth::user()->role == 'parent')
                     <x-responsive-nav-link :href="route('parent.dashboard')" :active="request()->routeIs('parent.dashboard')">
