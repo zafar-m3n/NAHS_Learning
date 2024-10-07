@@ -77,6 +77,7 @@ class RoleMiddleware
                 'parent.meetings.indexParent',
                 'parent.meetings.create',
                 'parent.meetings.store',
+                'parent.courses.index',
             ],
         ];
 

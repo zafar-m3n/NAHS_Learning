@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Parent\CourseController as ParentCoursesController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Student\TImetableController;
@@ -67,6 +68,8 @@ Route::middleware(['auth', 'role'])->prefix('student')->name('student.')->group(
 
 Route::middleware(['auth', 'role'])->prefix('parent')->name('parent.')->group(function () {
     Route::get('/dashboard', [ParentDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [ParentDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/courses', [ParentCoursesController::class, 'index'])->name('courses.index');
 
     Route::get('meetings', [MeetingController::class, 'indexParent'])->name('meetings.indexParent');
     Route::get('meetings/create', [MeetingController::class, 'create'])->name('meetings.create');

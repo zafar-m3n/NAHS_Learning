@@ -65,7 +65,7 @@
                             <x-nav-link :href="route('parent.dashboard')" :active="request()->routeIs('parent.dashboard')">
                                 {{ __('Dashboard') }}
                             </x-nav-link>
-                            <x-nav-link href="#">
+                            <x-nav-link :href="route('parent.courses.index')" :active="request()->routeIs('parent.courses.index')">
                                 {{ __('Child\'s Courses') }}
                             </x-nav-link>
                             <x-nav-link :href="route('parent.meetings.indexParent')" :active="request()->routeIs('parent.meetings.indexParent')">
