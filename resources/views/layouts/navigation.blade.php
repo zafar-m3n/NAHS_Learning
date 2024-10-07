@@ -29,6 +29,9 @@
                             <x-nav-link :href="route('admin.students.index')" :active="request()->routeIs('admin.students.index')">
                                 {{ __('Students') }}
                             </x-nav-link>
+                            <x-nav-link :href="route('admin.payments.index')" :active="request()->routeIs('admin.payments.index')">
+                                {{ __('Payments') }}
+                            </x-nav-link>
                         @elseif(Auth::user()->role == 'lecturer')
                             <x-nav-link :href="route('lecturer.dashboard')" :active="request()->routeIs('lecturer.dashboard')">
                                 {{ __('Dashboard') }}

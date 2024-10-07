@@ -42,6 +42,7 @@ class RoleMiddleware
                 'admin.meetings.indexAdmin',
                 'admin.meetings.approve',
                 'admin.meetings.reject',
+                'admin.payments.index',
             ],
             'student' => [
                 'student.dashboard',

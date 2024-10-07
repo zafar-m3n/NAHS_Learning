@@ -40,6 +40,8 @@ Route::middleware(['auth', 'role'])->prefix('admin')->name('admin.')->group(func
     Route::resource('courses', CourseController::class)->except(['show']);
     Route::resource('students', StudentController::class);
 
+    Route::get('payments', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('payments.index');
+
     // Admin meeting routes
     Route::get('meetings', [MeetingController::class, 'indexAdmin'])->name('meetings.indexAdmin');
     Route::patch('meetings/{meeting}/approve', [MeetingController::class, 'approve'])->name('meetings.approve');
